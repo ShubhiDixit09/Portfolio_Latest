@@ -192,13 +192,13 @@ export default function Navbar({ themeId, setThemeId }) {
             <a
               href={personalInfo.resumeUrl}
               target="_blank"
-              rel="noreferrer"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium transition-colors"
-              style={{ color: 'var(--text-2)', border: '1px solid var(--border)', background: 'var(--surface)' }}
-              onMouseEnter={e => { e.currentTarget.style.color = 'var(--accent-text)'; e.currentTarget.style.borderColor = 'var(--accent)'; }}
-              onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-2)'; e.currentTarget.style.borderColor = 'var(--border)'; }}
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs sm:text-sm font-semibold transition-all"
+              style={{ color: 'var(--text-1)', border: '1px solid var(--border)', background: 'var(--surface-2)' }}
+              onMouseEnter={e => { e.currentTarget.style.color = 'var(--accent-text)'; e.currentTarget.style.borderColor = 'var(--accent)'; e.currentTarget.style.background = 'var(--surface)'; }}
+              onMouseLeave={e => { e.currentTarget.style.color = 'var(--text-1)'; e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.background = 'var(--surface-2)'; }}
             >
-              <FileText className="w-3.5 h-3.5" />
+              <FileText className="w-3.5 h-3.5" style={{ color: 'var(--accent-text)' }} />
               <span>Resume</span>
             </a>
 
@@ -243,14 +243,25 @@ export default function Navbar({ themeId, setThemeId }) {
                 {link.label}
               </a>
             ))}
-            <div className="pt-2 mt-1 px-2" style={{ borderTop: '1px solid var(--border)' }}>
+            <div className="pt-2 mt-1 px-2 flex flex-col gap-2" style={{ borderTop: '1px solid var(--border)' }}>
+              <a
+                href={personalInfo.resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-sm font-semibold transition-colors"
+                style={{ background: 'var(--surface-2)', color: 'var(--text-1)', border: '1px solid var(--border)' }}
+              >
+                <FileText className="w-4 h-4" style={{ color: 'var(--accent-text)' }} />
+                <span>View Resume</span>
+              </a>
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-sm font-medium text-white transition-colors"
                 style={{ background: 'var(--accent)' }}
               >
-                Get in Touch
+                <span>Get in Touch</span>
                 <ArrowUpRight className="w-4 h-4" />
               </a>
             </div>
