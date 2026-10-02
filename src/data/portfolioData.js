@@ -7,12 +7,13 @@ export const personalInfo = {
   status: "Open to Software Engineering & AI/ML Internships",
   location: "Delhi, India",
   avatarUrl: "/profile.jpg",
-  email: "shubhidixit09@gmail.com",
+  email: "shubhidtu@gmail.com",
+  phone: "+91 9311535683",
   github: "https://github.com/ShubhiDixit09",
   linkedin: "https://www.linkedin.com/in/shubhi-dixit-dtu/",
   leetcode: "https://leetcode.com/u/shubhi_dixit_09/",
   codeforces: "https://codeforces.com/profile/shubhi.dixit.dtu",
-  resumeUrl: "#",
+  resumeUrl: "/Shubhi-Dixit-Resume.pdf",
 };
 
 export const stats = [

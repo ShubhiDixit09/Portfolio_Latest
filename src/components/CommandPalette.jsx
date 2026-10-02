@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, ArrowUpRight, FileText, Mail, X, Sparkles, FolderGit2, GraduationCap, Briefcase, User } from 'lucide-react';
+import { Search, ArrowUpRight, FileText, Mail, Phone, X, Sparkles, FolderGit2, GraduationCap, Briefcase, User } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 
 export default function CommandPalette({ themeId, setThemeId }) {
@@ -71,6 +71,15 @@ export default function CommandPalette({ themeId, setThemeId }) {
           icon: <Mail className="w-4 h-4" />,
           action: () => {
             navigator.clipboard.writeText(personalInfo.email);
+            setOpen(false);
+          }
+        },
+        {
+          label: 'Copy Phone Number',
+          hint: personalInfo.phone,
+          icon: <Phone className="w-4 h-4" />,
+          action: () => {
+            navigator.clipboard.writeText(personalInfo.phone);
             setOpen(false);
           }
         },

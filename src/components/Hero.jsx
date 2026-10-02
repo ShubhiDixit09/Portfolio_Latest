@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowDown, Mail, ArrowUpRight, FileText } from 'lucide-react';
+import { ArrowDown, Mail, Phone, ArrowUpRight, FileText } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, LeetCodeIcon, CodeforcesIcon } from './Icons';
 import { personalInfo, stats } from '../data/portfolioData';
 
@@ -87,7 +87,8 @@ export default function Hero() {
                     { href: personalInfo.linkedin, icon: <LinkedinIcon className="w-4 h-4" />, title: 'LinkedIn' },
                     { href: personalInfo.leetcode, icon: <LeetCodeIcon className="w-4 h-4" />, title: 'LeetCode' },
                     { href: personalInfo.codeforces, icon: <CodeforcesIcon className="w-4 h-4" />, title: 'Codeforces' },
-                    { href: `mailto:${personalInfo.email}`, icon: <Mail className="w-4 h-4" />, title: 'Email' },
+                    { href: `mailto:${personalInfo.email}`, icon: <Mail className="w-4 h-4" />, title: 'Email: ' + personalInfo.email },
+                    { href: `tel:${personalInfo.phone.replace(/\s+/g, '')}`, icon: <Phone className="w-4 h-4" />, title: 'Phone: ' + personalInfo.phone },
                   ].map(({ href, icon, title }) => (
                     <a
                       key={title}

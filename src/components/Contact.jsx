@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Mail, Copy, Check, Send, Loader2 } from 'lucide-react';
+import { Mail, Phone, Copy, Check, Send, Loader2 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, LeetCodeIcon, CodeforcesIcon } from './Icons';
 import { personalInfo } from '../data/portfolioData';
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
+  const [copiedPhone, setCopiedPhone] = useState(false);
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState('');
@@ -14,6 +15,12 @@ export default function Contact() {
     navigator.clipboard.writeText(personalInfo.email);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleCopyPhone = () => {
+    navigator.clipboard.writeText(personalInfo.phone);
+    setCopiedPhone(true);
+    setTimeout(() => setCopiedPhone(false), 2000);
   };
 
   const handleSubmit = async (e) => {
@@ -91,24 +98,51 @@ export default function Contact() {
                 Open to Software Engineering and AI/ML internship opportunities, research collaborations, and technical discussions.
               </p>
 
-              {/* Email Copy Card */}
-              <div className="inline-flex items-center gap-3 p-3 rounded-xl mb-6"
-                style={{ background: 'var(--surface-2)', border: '1px solid var(--border)' }}>
-                <Mail className="w-4 h-4 shrink-0" style={{ color: 'var(--accent-text)' }} />
-                <a href={`mailto:${personalInfo.email}`}
-                  className="text-xs sm:text-sm font-semibold hover:underline"
-                  style={{ color: 'var(--text-1)' }}>
-                  {personalInfo.email}
-                </a>
-                <button onClick={handleCopy} title="Copy email"
-                  className="p-1.5 rounded-lg transition-colors cursor-pointer"
-                  style={{ color: 'var(--text-3)' }}
-                  onMouseEnter={e => e.currentTarget.style.background = 'var(--border)'}
-                  onMouseLeave={e => e.currentTarget.style.background = 'transparent'}>
-                  {copied
-                    ? <Check className="w-3.5 h-3.5" style={{ color: 'var(--accent-text)' }} />
-                    : <Copy className="w-3.5 h-3.5" />}
-                </button>
+              {/* Direct Contact Cards */}
+              <div className="flex flex-col gap-2.5 mb-6 max-w-sm">
+                {/* Email Card */}
+                <div className="flex items-center justify-between gap-3 p-3 rounded-xl"
+                  style={{ background: 'var(--surface-2)', border: '1px solid var(--border)' }}>
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <Mail className="w-4 h-4 shrink-0" style={{ color: 'var(--accent-text)' }} />
+                    <a href={`mailto:${personalInfo.email}`}
+                      className="text-xs sm:text-sm font-semibold hover:underline truncate"
+                      style={{ color: 'var(--text-1)' }}>
+                      {personalInfo.email}
+                    </a>
+                  </div>
+                  <button onClick={handleCopy} title="Copy email"
+                    className="p-1.5 rounded-lg transition-colors cursor-pointer shrink-0"
+                    style={{ color: 'var(--text-3)' }}
+                    onMouseEnter={e => e.currentTarget.style.background = 'var(--border)'}
+                    onMouseLeave={e => e.currentTarget.style.background = 'transparent'}>
+                    {copied
+                      ? <Check className="w-3.5 h-3.5" style={{ color: 'var(--accent-text)' }} />
+                      : <Copy className="w-3.5 h-3.5" />}
+                  </button>
+                </div>
+
+                {/* Phone Card */}
+                <div className="flex items-center justify-between gap-3 p-3 rounded-xl"
+                  style={{ background: 'var(--surface-2)', border: '1px solid var(--border)' }}>
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <Phone className="w-4 h-4 shrink-0" style={{ color: 'var(--accent-text)' }} />
+                    <a href={`tel:${personalInfo.phone.replace(/\s+/g, '')}`}
+                      className="text-xs sm:text-sm font-semibold hover:underline font-mono tracking-wide"
+                      style={{ color: 'var(--text-1)' }}>
+                      {personalInfo.phone}
+                    </a>
+                  </div>
+                  <button onClick={handleCopyPhone} title="Copy phone number"
+                    className="p-1.5 rounded-lg transition-colors cursor-pointer shrink-0"
+                    style={{ color: 'var(--text-3)' }}
+                    onMouseEnter={e => e.currentTarget.style.background = 'var(--border)'}
+                    onMouseLeave={e => e.currentTarget.style.background = 'transparent'}>
+                    {copiedPhone
+                      ? <Check className="w-3.5 h-3.5" style={{ color: 'var(--accent-text)' }} />
+                      : <Copy className="w-3.5 h-3.5" />}
+                  </button>
+                </div>
               </div>
 
               {/* Social Links */}

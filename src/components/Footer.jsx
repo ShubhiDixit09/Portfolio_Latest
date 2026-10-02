@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUp, Mail } from 'lucide-react';
+import { ArrowUp, Mail, Phone } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from './Icons';
 import { personalInfo } from '../data/portfolioData';
 
@@ -35,6 +35,7 @@ export default function Footer() {
                 { href: personalInfo.github, icon: <GithubIcon className="w-4 h-4" />, label: 'GitHub' },
                 { href: personalInfo.linkedin, icon: <LinkedinIcon className="w-4 h-4" />, label: 'LinkedIn' },
                 { href: `mailto:${personalInfo.email}`, icon: <Mail className="w-4 h-4" />, label: 'Email' },
+                { href: `tel:${personalInfo.phone.replace(/\s+/g, '')}`, icon: <Phone className="w-4 h-4" />, label: 'Phone' },
               ].map(({ href, icon, label }) => (
                 <a key={label} href={href} target={href.startsWith('mailto') ? undefined : '_blank'}
                   rel="noreferrer" aria-label={label}
