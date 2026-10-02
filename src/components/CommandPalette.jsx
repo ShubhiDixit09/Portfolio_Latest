@@ -47,7 +47,6 @@ export default function CommandPalette({ themeId, setThemeId }) {
       items: [
         { label: 'About', hint: 'Background & Focus', icon: <User className="w-4 h-4" />, action: () => scrollTo('about') },
         { label: 'Skills', hint: 'Languages, AI/ML, Stack', icon: <Sparkles className="w-4 h-4" />, action: () => scrollTo('skills') },
-        { label: 'Coding Stats', hint: 'LeetCode & Codeforces', icon: <ArrowUpRight className="w-4 h-4" />, action: () => scrollTo('coding') },
         { label: 'Projects', hint: 'Shipped systems & repos', icon: <FolderGit2 className="w-4 h-4" />, action: () => scrollTo('projects') },
         { label: 'Experience', hint: 'DTU Times & Leadership', icon: <Briefcase className="w-4 h-4" />, action: () => scrollTo('experience') },
         { label: 'Education & Honors', hint: 'DTU, SIH, Milestones', icon: <GraduationCap className="w-4 h-4" />, action: () => scrollTo('education') },
