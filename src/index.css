@@ -1,0 +1,173 @@
+@import "tailwindcss";
+
+/* Override Tailwind v4 dark-mode to use data-theme selector, NOT OS prefers-color-scheme */
+@variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg, #fafafc);
+    color: var(--text-1, #0f172a);
+  }
+  body {
+    background-color: var(--bg, #fafafc);
+  }
+}
+
+/* ─── Theme CSS Variables ─────────────────────────────── */
+
+:root, [data-theme="light"] {
+  --bg:            #fafafc;
+  --surface:       #ffffff;
+  --surface-2:     #f1f5f9;
+  --border:        #e2e8f0;
+  --border-strong: #cbd5e1;
+  --text-1:        #0f172a;
+  --text-2:        #475569;
+  --text-3:        #94a3b8;
+  --accent:        #4f46e5;
+  --accent-hover:  #4338ca;
+  --accent-muted:  #eef2ff;
+  --accent-text:   #4f46e5;
+  --accent-border: #c7d2fe;
+  --tag-bg:        #f1f5f9;
+  --tag-text:      #334155;
+  --tag-border:    #e2e8f0;
+  --nav-bg:        rgba(255,255,255,0.92);
+  --nav-border:    #e2e8f0;
+}
+
+[data-theme="dark"] {
+  --bg:            #0f172a;
+  --surface:       #1e293b;
+  --surface-2:     #0f172a;
+  --border:        #334155;
+  --border-strong: #475569;
+  --text-1:        #f1f5f9;
+  --text-2:        #cbd5e1;
+  --text-3:        #94a3b8;
+  --accent:        #6366f1;
+  --accent-hover:  #4f46e5;
+  --accent-muted:  #1e1b4b;
+  --accent-text:   #a5b4fc;
+  --accent-border: #3730a3;
+  --tag-bg:        #334155;
+  --tag-text:      #e2e8f0;
+  --tag-border:    #475569;
+  --nav-bg:        rgba(15,23,42,0.94);
+  --nav-border:    #1e293b;
+}
+
+[data-theme="ocean"] {
+  --bg:            #030d1a;
+  --surface:       #051929;
+  --surface-2:     #030d1a;
+  --border:        #0e3254;
+  --border-strong: #1557a0;
+  --text-1:        #e0f2fe;
+  --text-2:        #bae6fd;
+  --text-3:        #7dd3fc;
+  --accent:        #0ea5e9;
+  --accent-hover:  #0284c7;
+  --accent-muted:  #082f49;
+  --accent-text:   #38bdf8;
+  --accent-border: #075985;
+  --tag-bg:        #0c2a42;
+  --tag-text:      #bae6fd;
+  --tag-border:    #0e3254;
+  --nav-bg:        rgba(3,13,26,0.94);
+  --nav-border:    #0e3254;
+}
+
+[data-theme="sunset"] {
+  --bg:            #fff7ed;
+  --surface:       #ffffff;
+  --surface-2:     #fef3c7;
+  --border:        #fed7aa;
+  --border-strong: #fdba74;
+  --text-1:        #431407;
+  --text-2:        #7c2d12;
+  --text-3:        #c2410c;
+  --accent:        #ea580c;
+  --accent-hover:  #c2410c;
+  --accent-muted:  #fff7ed;
+  --accent-text:   #c2410c;
+  --accent-border: #fed7aa;
+  --tag-bg:        #fef3c7;
+  --tag-text:      #92400e;
+  --tag-border:    #fde68a;
+  --nav-bg:        rgba(255,247,237,0.94);
+  --nav-border:    #fed7aa;
+}
+
+[data-theme="forest"] {
+  --bg:            #f0fdf4;
+  --surface:       #ffffff;
+  --surface-2:     #dcfce7;
+  --border:        #bbf7d0;
+  --border-strong: #4ade80;
+  --text-1:        #052e16;
+  --text-2:        #166534;
+  --text-3:        #15803d;
+  --accent:        #16a34a;
+  --accent-hover:  #15803d;
+  --accent-muted:  #dcfce7;
+  --accent-text:   #16a34a;
+  --accent-border: #bbf7d0;
+  --tag-bg:        #dcfce7;
+  --tag-text:      #14532d;
+  --tag-border:    #86efac;
+  --nav-bg:        rgba(240,253,244,0.94);
+  --nav-border:    #bbf7d0;
+}
+
+[data-theme="rose"] {
+  --bg:            #0d0a0f;
+  --surface:       #1a0e1e;
+  --surface-2:     #0d0a0f;
+  --border:        #3b1a45;
+  --border-strong: #7e22ce;
+  --text-1:        #fdf4ff;
+  --text-2:        #e879f9;
+  --text-3:        #c026d3;
+  --accent:        #a855f7;
+  --accent-hover:  #9333ea;
+  --accent-muted:  #2d1b4e;
+  --accent-text:   #d8b4fe;
+  --accent-border: #6b21a8;
+  --tag-bg:        #2d1b4e;
+  --tag-text:      #e879f9;
+  --tag-border:    #581c87;
+  --nav-bg:        rgba(13,10,15,0.95);
+  --nav-border:    #3b1a45;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-strong); border-radius: 4px; }
+
+/* ─── Scroll Reveal Animations ──────────────────────── */
+@keyframes revealFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
