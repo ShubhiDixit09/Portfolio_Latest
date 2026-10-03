@@ -22,9 +22,7 @@ export default function Footer() {
               <p className="text-sm font-semibold" style={{ color: 'var(--text-1)' }}>
                 {personalInfo.name}
               </p>
-              <p className="text-xs" style={{ color: 'var(--text-3)' }}>
-                Built with React, Vite & Tailwind CSS.
-              </p>
+
             </div>
           </div>
 
