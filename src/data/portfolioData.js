@@ -19,7 +19,7 @@ export const personalInfo = {
 export const stats = [
   { label: "Hackathons", value: "5x Finalist" },
   { label: "Logitech Zonal", value: "Top 1.9%" },
-  { label: "DSA Solved", value: "200+" },
+  { label: "DSA Problems", value: "200+" },
   { label: "Projects Shipped", value: "6+" },
 ];
 
