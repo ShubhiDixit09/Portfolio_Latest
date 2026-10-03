@@ -109,7 +109,17 @@ export const projects = [
     liveUrl: "https://github.com/ShubhiDixit09/muskmelon",
     githubUrl: "https://github.com/ShubhiDixit09/muskmelon",
     featured: true,
-    architecture: ["User Query", "Temporal Embedding Index", "RAG with Knowledge Commits", "Answer Receipt + Diff Output"]
+    architecture: ["User Query", "Temporal Embedding Index", "RAG with Knowledge Commits", "Answer Receipt + Diff Output"],
+    caseStudy: {
+      problem: "Standard RAG systems treat knowledge as static or flat in time. When queries require understanding how positions or facts evolve over months or years, typical vector databases return conflicting statements without temporal provenance.",
+      solution: "Engineered a time-indexed Retrieval-Augmented Generation pipeline using timestamped Knowledge Commits and audit-grade Answer Receipts, allowing deterministic diffing across conflicting historical statements.",
+      decisions: [
+        { title: "Temporal Indexing over Naive Vector Store", reason: "Embedded timestamp metadata directly into distance metrics to prioritize chronologically coherent reasoning chains." },
+        { title: "Deterministic Answer Receipts", reason: "Emitted cryptographic-style reference receipts so users can verify exact source documents and commit timestamps." },
+        { title: "Next.js + Fast Vector Retrieval", reason: "Sub-100ms vector lookups with streaming UI responses for responsive interactive exploration." }
+      ],
+      impact: "Placed 4th out of 250+ competing teams at VibeWright NSUT Hackathon."
+    }
   },
   {
     id: "jeevanmesh",
@@ -122,7 +132,17 @@ export const projects = [
     liveUrl: "https://github.com/ShubhiDixit09/nsut-JeevanMesh",
     githubUrl: "https://github.com/ShubhiDixit09/nsut-JeevanMesh",
     featured: true,
-    architecture: ["Drone Agent Fleet", "BubbleNet Spatial Search", "Store-Carry-Forward Relay Mesh", "Live Geospatial Visualization"]
+    architecture: ["Drone Agent Fleet", "BubbleNet Spatial Search", "Store-Carry-Forward Relay Mesh", "Live Geospatial Visualization"],
+    caseStudy: {
+      problem: "Post-disaster search-and-rescue operations face completely shattered telecom infrastructure. Centralized drone swarms fail when leader nodes crash or network partitions occur.",
+      solution: "Built a fully decentralized, leaderless agent coordination protocol with BubbleNet dynamic coverage algorithms and a delay-tolerant store-carry-forward relay mesh.",
+      decisions: [
+        { title: "Leaderless Peer Gossip", reason: "Zero single point of failure; nodes discover neighbors dynamically using local beaconing without central coordination." },
+        { title: "BubbleNet Spatial Search", reason: "Adaptive expanding circles optimized for probabilistic survivor cluster densities instead of exhaustive brute-force grid passes." },
+        { title: "Store-Carry-Forward Routing", reason: "Drones physically ferry cached telemetry packets across disconnected communication voids to base stations." }
+      ],
+      impact: "Achieved 39.7% faster target discovery over traditional sequential grid scans under simulated packet-loss conditions."
+    }
   },
   {
     id: "vcr-aims",
@@ -135,7 +155,16 @@ export const projects = [
     liveUrl: "https://github.com/ShubhiDixit09/updated_VCR_AIMS_R2",
     githubUrl: "https://github.com/ShubhiDixit09/updated_VCR_AIMS_R2",
     featured: true,
-    architecture: ["Image + Question Input", "Dual-View Grounded Encoder", "Attention Masking Layer", "Answer & Rationale Output"]
+    architecture: ["Image + Question Input", "Dual-View Grounded Encoder", "Attention Masking Layer", "Answer & Rationale Output"],
+    caseStudy: {
+      problem: "Traditional Vision-Language models often succeed at shallow recognition but fail at high-order cognitive reasoning (e.g. predicting human intent or causal antecedents behind a scene).",
+      solution: "Implemented a dual-view multimodal grounding pipeline with object-level bounding box attention and cross-modal rationale generators.",
+      decisions: [
+        { title: "Dual-View Grounding", reason: "Decouples global scene contextual features from localized object embeddings to prevent background hallucination." },
+        { title: "Joint Q-A and Rationale Prediction", reason: "Requires the model to justify its chosen answer with grounded commonsense explanations rather than lucky classification." }
+      ],
+      impact: "Reached 80% Question-Answer and 40% Question-Answer-Rationale benchmark accuracy on difficult visual reasoning benchmarks."
+    }
   },
   {
     id: "chronosync",
@@ -148,7 +177,16 @@ export const projects = [
     liveUrl: "https://github.com/ShubhiDixit09/ChronoSync-updated",
     githubUrl: "https://github.com/ShubhiDixit09/ChronoSync-updated",
     featured: true,
-    architecture: ["Constraint Input (Rooms, Faculty, Slots)", "Genetic Algorithm Population", "Tabu Search Local Optimization", "Conflict-Free Schedule Output"]
+    architecture: ["Constraint Input (Rooms, Faculty, Slots)", "Genetic Algorithm Population", "Tabu Search Local Optimization", "Conflict-Free Schedule Output"],
+    caseStudy: {
+      problem: "University scheduling is an NP-hard combinatorial problem with hundreds of hard constraints (faculty clashes, room capacities) and soft preferences (evenly distributed workload).",
+      solution: "Engineered a hybrid heuristic engine combining Genetic Algorithms for global population exploration with Tabu Search to escape local minima in strict constraint graphs.",
+      decisions: [
+        { title: "Hybrid Metaheuristic", reason: "Pure genetic crossover easily creates illegal states; local Tabu search resolves micro-conflicts rapidly." },
+        { title: "FastAPI Backend + Asynchronous Solver", reason: "Isolated heavy CPU compute workloads into worker processes without blocking the interactive schedule preview UI." }
+      ],
+      impact: "Reduced timetable generation time from days of manual clerical scheduling to under 45 seconds of automated constraint satisfaction."
+    }
   },
   {
     id: "nyayabot",
@@ -160,7 +198,16 @@ export const projects = [
     tags: ["Python", "FastAPI", "React", "Gemma 4", "ChromaDB"],
     liveUrl: "https://github.com/ShubhiDixit09/NyayaBot.ShieldAI",
     githubUrl: "https://github.com/ShubhiDixit09/NyayaBot.ShieldAI",
-    featured: false
+    featured: false,
+    caseStudy: {
+      problem: "Legal document analysis often involves sensitive, privileged client data that cannot be sent to cloud LLM APIs due to regulatory and confidentiality requirements.",
+      solution: "Engineered an entirely local, air-gapped legal RAG system optimized for quantised Gemma models running on consumer hardware under 6GB VRAM.",
+      decisions: [
+        { title: "Prompt-Injection Guardrails", reason: "Built ShieldAI filtering layer to prevent adversarial injection in untrusted case files." },
+        { title: "Local Vector Retrieval", reason: "Local ChromaDB embedding search for instant offline reference lookup with zero cloud egress." }
+      ],
+      impact: "Zero cloud dependencies, guaranteeing absolute data confidentiality for offline legal intelligence."
+    }
   },
   {
     id: "oon-nirnay",
@@ -300,20 +347,23 @@ export const certifications = [
     issuer: "HackerRank",
     date: "Jul 2026",
     image: "/certificates/hackerrank_python.jpg",
-    highlight: "Certificate of Accomplishment — Skill Test Passed"
+    highlight: "Certificate of Accomplishment — Skill Test Passed",
+    verifyUrl: "https://www.hackerrank.com/certificates"
   },
   {
     name: "Intro to Machine Learning",
     issuer: "Kaggle",
     date: "Jul 2026",
     image: "/certificates/kaggle_intro_ml.png",
-    highlight: "Certificate of Completion"
+    highlight: "Certificate of Completion",
+    verifyUrl: "https://www.kaggle.com/learn/certification"
   },
   {
     name: "Intermediate Machine Learning",
     issuer: "Kaggle",
     date: "Jul 2026",
     image: "/certificates/kaggle_intermediate_ml.png",
-    highlight: "Certificate of Completion"
+    highlight: "Certificate of Completion",
+    verifyUrl: "https://www.kaggle.com/learn/certification"
   }
 ];

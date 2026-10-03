@@ -204,26 +204,36 @@ export default function Education() {
               className="relative max-w-3xl w-full rounded-2xl overflow-hidden shadow-2xl"
               style={{
                 background: 'var(--surface)',
-                border: '1px solid var(--border)'
+                border: '1px solid var(--border)',
+                maxHeight: '90vh',
+                display: 'flex',
+                flexDirection: 'column',
               }}
               onClick={e => e.stopPropagation()}
             >
               {/* Modal Header */}
               <div
-                className="p-4 flex items-center justify-between"
+                className="px-5 py-4 flex items-start justify-between gap-4 shrink-0"
                 style={{ borderBottom: '1px solid var(--border)' }}
               >
                 <div>
-                  <h3 className="text-sm font-bold" style={{ color: 'var(--text-1)' }}>
+                  <h3 className="text-sm font-bold leading-snug" style={{ color: 'var(--text-1)' }}>
                     {selectedCert.name}
                   </h3>
-                  <p className="text-xs" style={{ color: 'var(--text-3)' }}>
-                    {selectedCert.issuer} {selectedCert.highlight ? `• ${selectedCert.highlight}` : ''}
+                  <p className="text-xs mt-0.5" style={{ color: 'var(--text-3)' }}>
+                    {selectedCert.issuer}
+                    {selectedCert.date ? ` · ${selectedCert.date}` : ''}
                   </p>
+                  {selectedCert.highlight && (
+                    <p className="text-[11px] font-medium mt-1.5 px-2 py-0.5 rounded-md inline-block"
+                      style={{ background: 'var(--accent-muted)', color: 'var(--accent-text)', border: '1px solid var(--accent-border)' }}>
+                      ★ {selectedCert.highlight}
+                    </p>
+                  )}
                 </div>
                 <button
                   onClick={() => setSelectedCert(null)}
-                  className="p-1.5 rounded-lg transition-colors cursor-pointer"
+                  className="shrink-0 p-1.5 rounded-lg transition-colors cursor-pointer"
                   style={{ color: 'var(--text-3)' }}
                   onMouseEnter={e => e.currentTarget.style.background = 'var(--surface-2)'}
                   onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
@@ -234,15 +244,36 @@ export default function Education() {
 
               {/* Modal Image */}
               <div
-                className="p-4 flex items-center justify-center max-h-[75vh] overflow-auto"
+                className="flex-1 flex items-center justify-center p-4 overflow-auto"
                 style={{ background: 'var(--surface-2)' }}
               >
                 <img
                   src={selectedCert.image}
                   alt={selectedCert.name}
-                  className="max-h-[70vh] w-auto object-contain rounded-lg shadow-sm"
+                  className="max-h-[60vh] w-auto object-contain rounded-lg shadow-sm"
                 />
               </div>
+
+              {/* Modal Footer */}
+              {selectedCert.verifyUrl && (
+                <div
+                  className="px-5 py-3 shrink-0 flex items-center justify-end"
+                  style={{ borderTop: '1px solid var(--border)' }}
+                >
+                  <a
+                    href={selectedCert.verifyUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs font-semibold transition-colors"
+                    style={{ color: 'var(--accent-text)' }}
+                    onMouseEnter={e => e.currentTarget.style.opacity = '0.75'}
+                    onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+                  >
+                    <span>Verify Certificate</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              )}
             </div>
           </div>
         )}
