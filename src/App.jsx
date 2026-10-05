@@ -10,7 +10,6 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CommandPalette from './components/CommandPalette';
 import Toast from './components/Toast';
-import TerminalDrawer from './components/TerminalDrawer';
 import { useScrollReveal } from './hooks/useScrollReveal';
 import { themes } from './data/themes';
 
@@ -68,7 +67,6 @@ export default function App() {
 
       {/* Global Interactive Overlays */}
       <Toast />
-      <TerminalDrawer themeId={themeId} setThemeId={setThemeId} />
       <CommandPalette
         themeId={themeId}
         setThemeId={setThemeId}

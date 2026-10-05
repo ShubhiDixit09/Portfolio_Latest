@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, ArrowUpRight, FileText, Mail, Phone, X, Sparkles, FolderGit2, GraduationCap, Briefcase, User, Terminal } from 'lucide-react';
+import { Search, ArrowUpRight, FileText, Mail, Phone, X, Sparkles, FolderGit2, GraduationCap, Briefcase, User } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 import { showToast } from './Toast';
 
@@ -57,15 +57,6 @@ export default function CommandPalette({ themeId, setThemeId }) {
     {
       category: 'Quick Actions',
       items: [
-        {
-          label: 'Toggle Developer Terminal',
-          hint: 'Interactive shell (` or ~)',
-          icon: <Terminal className="w-4 h-4" />,
-          action: () => {
-            window.dispatchEvent(new CustomEvent('toggle-terminal'));
-            setOpen(false);
-          }
-        },
         {
           label: 'View / Download Resume',
           hint: 'Opens CV in new tab',

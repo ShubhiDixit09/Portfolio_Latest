@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Palette, Menu, X, ArrowUpRight, Check, Search, FileText, Terminal } from 'lucide-react';
+import { Palette, Menu, X, ArrowUpRight, Check, Search, FileText } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 import { themes } from '../data/themes';
 
@@ -188,17 +188,6 @@ export default function Navbar({ themeId, setThemeId }) {
               <kbd className="text-[10px] font-mono px-1 py-0.5 rounded" style={{ background: 'var(--border)' }}>⌘K</kbd>
             </button>
 
-            {/* Developer Terminal Trigger */}
-            <button
-              onClick={() => window.dispatchEvent(new CustomEvent('toggle-terminal'))}
-              className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-mono transition-colors cursor-pointer"
-              style={{ background: 'var(--surface-2)', color: 'var(--text-2)', border: '1px solid var(--border)' }}
-              title="Open Developer Terminal (Press ` or ~)"
-            >
-              <Terminal className="w-3.5 h-3.5" style={{ color: 'var(--accent-text)' }} />
-              <span>&gt;_</span>
-            </button>
-
             {/* Resume Link */}
             <a
               href={personalInfo.resumeUrl}
@@ -255,14 +244,6 @@ export default function Navbar({ themeId, setThemeId }) {
               </a>
             ))}
             <div className="pt-2 mt-1 px-2 flex flex-col gap-2" style={{ borderTop: '1px solid var(--border)' }}>
-              <button
-                onClick={() => { setMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('toggle-terminal')); }}
-                className="w-full inline-flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs font-mono transition-colors cursor-pointer"
-                style={{ background: 'var(--surface-2)', color: 'var(--text-2)', border: '1px solid var(--border)' }}
-              >
-                <Terminal className="w-3.5 h-3.5" style={{ color: 'var(--accent-text)' }} />
-                <span>Developer Terminal (&gt;_)</span>
-              </button>
               <a
                 href={personalInfo.resumeUrl}
                 target="_blank"
