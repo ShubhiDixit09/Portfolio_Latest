@@ -46,34 +46,14 @@ export default function About() {
             I’m a Computer Science student at Delhi Technological University, building systems at the intersection of AI, algorithms, and real-world decision-making.
           </p>
 
-          {/* Paragraph 2 - Specific bold terms */}
+          {/* Paragraph 2 - Normal text */}
           <p style={{ color: 'var(--text-2)' }}>
-            My work spans{' '}
-            <strong className="font-bold" style={{ color: 'var(--text-1)' }}>
-              agentic AI, retrieval and reasoning systems, distributed coordination, and optimization
-            </strong>{' '}
-            — from evidence-grounded legal AI and temporal knowledge systems to disaster-response meshes and geospatial decision platforms.
+            My work spans agentic AI, retrieval and reasoning systems, distributed coordination, and optimization — from evidence-grounded legal AI and temporal knowledge systems to disaster-response meshes and geospatial decision platforms.
           </p>
 
-          {/* Paragraph 3 - Specific bold terms */}
+          {/* Paragraph 3 - Normal text */}
           <p style={{ color: 'var(--text-2)' }}>
-            I currently build products at{' '}
-            <strong className="font-bold" style={{ color: 'var(--text-1)' }}>
-              DTU Times
-            </strong>
-            , experiment with{' '}
-            <strong className="font-bold" style={{ color: 'var(--text-1)' }}>
-              ML/LLM systems and research prototypes
-            </strong>
-            , and solve algorithmic problems on{' '}
-            <strong className="font-bold" style={{ color: 'var(--text-1)' }}>
-              LeetCode and Codeforces
-            </strong>
-            . I was also selected for{' '}
-            <strong className="font-bold" style={{ color: 'var(--text-1)' }}>
-              McKinsey Forward ’26
-            </strong>
-            .
+            I currently build products at DTU Times, experiment with ML/LLM systems and research prototypes, and solve algorithmic problems on LeetCode and Codeforces. I was also selected for McKinsey Forward ’26.
           </p>
         </div>
 
