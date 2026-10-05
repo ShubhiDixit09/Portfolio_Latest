@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Palette, Menu, X, ArrowUpRight, Check, Search, FileText, Terminal, Briefcase } from 'lucide-react';
+import { Palette, Menu, X, ArrowUpRight, Check, Search, FileText, Terminal } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
 import { themes } from '../data/themes';
 
-export default function Navbar({ themeId, setThemeId, onOpenRecruiter }) {
+export default function Navbar({ themeId, setThemeId }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [themeOpen, setThemeOpen] = useState(false);
@@ -199,21 +199,6 @@ export default function Navbar({ themeId, setThemeId, onOpenRecruiter }) {
               <span>&gt;_</span>
             </button>
 
-            {/* Recruiter View / Executive Summary */}
-            <button
-              onClick={onOpenRecruiter}
-              className="hidden lg:inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl text-xs font-semibold transition-all cursor-pointer"
-              style={{
-                background: 'var(--accent-muted)',
-                color: 'var(--accent-text)',
-                border: '1px solid var(--accent-border)'
-              }}
-              title="View 1-Page Candidate Executive Summary"
-            >
-              <Briefcase className="w-3.5 h-3.5" />
-              <span>Recruiter View</span>
-            </button>
-
             {/* Resume Link */}
             <a
               href={personalInfo.resumeUrl}
@@ -270,14 +255,6 @@ export default function Navbar({ themeId, setThemeId, onOpenRecruiter }) {
               </a>
             ))}
             <div className="pt-2 mt-1 px-2 flex flex-col gap-2" style={{ borderTop: '1px solid var(--border)' }}>
-              <button
-                onClick={() => { setMobileMenuOpen(false); onOpenRecruiter?.(); }}
-                className="w-full inline-flex items-center justify-center gap-1.5 py-2.5 rounded-xl text-sm font-semibold transition-colors cursor-pointer"
-                style={{ background: 'var(--accent-muted)', color: 'var(--accent-text)', border: '1px solid var(--accent-border)' }}
-              >
-                <Briefcase className="w-4 h-4" />
-                <span>Recruiter 1-Page Summary</span>
-              </button>
               <button
                 onClick={() => { setMobileMenuOpen(false); window.dispatchEvent(new CustomEvent('toggle-terminal')); }}
                 className="w-full inline-flex items-center justify-center gap-1.5 py-2 rounded-xl text-xs font-mono transition-colors cursor-pointer"

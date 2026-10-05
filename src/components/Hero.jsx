@@ -1,9 +1,9 @@
 import React from 'react';
-import { ArrowDown, Mail, Phone, ArrowUpRight, FileText, Briefcase } from 'lucide-react';
+import { ArrowDown, Mail, Phone, ArrowUpRight, FileText } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, LeetCodeIcon, CodeforcesIcon } from './Icons';
 import { personalInfo, stats } from '../data/portfolioData';
 
-export default function Hero({ onOpenRecruiter }) {
+export default function Hero() {
   return (
     <section id="hero" className="pt-28 pb-16 md:pt-36 md:pb-20">
       <div className="max-w-5xl mx-auto px-4 sm:px-6">
@@ -70,21 +70,6 @@ export default function Hero({ onOpenRecruiter }) {
                   <FileText className="w-3.5 h-3.5" />
                   <span>Resume</span>
                 </a>
-
-                <button
-                  onClick={onOpenRecruiter}
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm transition-all cursor-pointer"
-                  style={{
-                    background: 'var(--accent-muted)',
-                    color: 'var(--accent-text)',
-                    border: '1px solid var(--accent-border)'
-                  }}
-                  onMouseEnter={e => { e.currentTarget.style.background = 'var(--accent-hover)'; e.currentTarget.style.color = '#fff'; }}
-                  onMouseLeave={e => { e.currentTarget.style.background = 'var(--accent-muted)'; e.currentTarget.style.color = 'var(--accent-text)'; }}
-                >
-                  <Briefcase className="w-3.5 h-3.5" />
-                  <span>Recruiter View</span>
-                </button>
 
                 <a
                   href="#contact"

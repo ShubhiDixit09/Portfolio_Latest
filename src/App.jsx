@@ -11,14 +11,12 @@ import Footer from './components/Footer';
 import CommandPalette from './components/CommandPalette';
 import Toast from './components/Toast';
 import TerminalDrawer from './components/TerminalDrawer';
-import RecruiterModal from './components/RecruiterModal';
 import { useScrollReveal } from './hooks/useScrollReveal';
 import { themes } from './data/themes';
 
 export default function App() {
   // Always default to light; restore saved theme on mount
   const [themeId, setThemeId] = useState('light');
-  const [isRecruiterOpen, setIsRecruiterOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
   // Activate intersection observer scroll reveals
@@ -71,21 +69,18 @@ export default function App() {
       {/* Global Interactive Overlays */}
       <Toast />
       <TerminalDrawer themeId={themeId} setThemeId={setThemeId} />
-      <RecruiterModal isOpen={isRecruiterOpen} onClose={() => setIsRecruiterOpen(false)} />
       <CommandPalette
         themeId={themeId}
         setThemeId={setThemeId}
-        onOpenRecruiter={() => setIsRecruiterOpen(true)}
       />
 
       <Navbar
         themeId={themeId}
         setThemeId={setThemeId}
-        onOpenRecruiter={() => setIsRecruiterOpen(true)}
       />
 
       <main className="space-y-4">
-        <Hero onOpenRecruiter={() => setIsRecruiterOpen(true)} />
+        <Hero />
         <About />
         <Skills />
         <Projects />

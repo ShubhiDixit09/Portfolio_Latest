@@ -3,7 +3,7 @@ import { Search, ArrowUpRight, FileText, Mail, Phone, X, Sparkles, FolderGit2, G
 import { personalInfo } from '../data/portfolioData';
 import { showToast } from './Toast';
 
-export default function CommandPalette({ themeId, setThemeId, onOpenRecruiter }) {
+export default function CommandPalette({ themeId, setThemeId }) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -57,15 +57,6 @@ export default function CommandPalette({ themeId, setThemeId, onOpenRecruiter })
     {
       category: 'Quick Actions',
       items: [
-        {
-          label: 'Executive Summary / Recruiter View',
-          hint: '1-page candidate briefing & metrics',
-          icon: <Briefcase className="w-4 h-4" />,
-          action: () => {
-            onOpenRecruiter?.();
-            setOpen(false);
-          }
-        },
         {
           label: 'Toggle Developer Terminal',
           hint: 'Interactive shell (` or ~)',
