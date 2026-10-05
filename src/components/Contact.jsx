@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Mail, Phone, Copy, Check, Send, Loader2 } from 'lucide-react';
 import { GithubIcon, LinkedinIcon, LeetCodeIcon, CodeforcesIcon } from './Icons';
 import { personalInfo } from '../data/portfolioData';
+import { showToast } from './Toast';
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -14,12 +15,14 @@ export default function Contact() {
   const handleCopy = () => {
     navigator.clipboard.writeText(personalInfo.email);
     setCopied(true);
+    showToast(`Copied email: ${personalInfo.email}`);
     setTimeout(() => setCopied(false), 2000);
   };
 
   const handleCopyPhone = () => {
     navigator.clipboard.writeText(personalInfo.phone);
     setCopiedPhone(true);
+    showToast(`Copied phone: ${personalInfo.phone}`);
     setTimeout(() => setCopiedPhone(false), 2000);
   };
 

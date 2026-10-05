@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Search, ArrowUpRight, FileText, Mail, Phone, X, Sparkles, FolderGit2, GraduationCap, Briefcase, User } from 'lucide-react';
+import { Search, ArrowUpRight, FileText, Mail, Phone, X, Sparkles, FolderGit2, GraduationCap, Briefcase, User, Terminal } from 'lucide-react';
 import { personalInfo } from '../data/portfolioData';
+import { showToast } from './Toast';
 
-export default function CommandPalette({ themeId, setThemeId }) {
+export default function CommandPalette({ themeId, setThemeId, onOpenRecruiter }) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -57,6 +58,24 @@ export default function CommandPalette({ themeId, setThemeId }) {
       category: 'Quick Actions',
       items: [
         {
+          label: 'Executive Summary / Recruiter View',
+          hint: '1-page candidate briefing & metrics',
+          icon: <Briefcase className="w-4 h-4" />,
+          action: () => {
+            onOpenRecruiter?.();
+            setOpen(false);
+          }
+        },
+        {
+          label: 'Toggle Developer Terminal',
+          hint: 'Interactive shell (` or ~)',
+          icon: <Terminal className="w-4 h-4" />,
+          action: () => {
+            window.dispatchEvent(new CustomEvent('toggle-terminal'));
+            setOpen(false);
+          }
+        },
+        {
           label: 'View / Download Resume',
           hint: 'Opens CV in new tab',
           icon: <FileText className="w-4 h-4" />,
@@ -71,6 +90,7 @@ export default function CommandPalette({ themeId, setThemeId }) {
           icon: <Mail className="w-4 h-4" />,
           action: () => {
             navigator.clipboard.writeText(personalInfo.email);
+            showToast(`Copied email: ${personalInfo.email}`);
             setOpen(false);
           }
         },
@@ -80,6 +100,7 @@ export default function CommandPalette({ themeId, setThemeId }) {
           icon: <Phone className="w-4 h-4" />,
           action: () => {
             navigator.clipboard.writeText(personalInfo.phone);
+            showToast(`Copied phone: ${personalInfo.phone}`);
             setOpen(false);
           }
         },

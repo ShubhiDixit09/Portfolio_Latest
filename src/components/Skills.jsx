@@ -4,7 +4,8 @@ import {
   Sparkles, Server, Workflow, HardDrive, Zap, GitBranch, Container, Send, Wrench,
   Layers, BrainCircuit, Box, ShieldCheck, CheckCircle2
 } from 'lucide-react';
-import { skillCategories } from '../data/portfolioData';
+import { skillCategories, projects } from '../data/portfolioData';
+import { showToast } from './Toast';
 
 const iconMap = {
   Code2, FileCode, Terminal, Cpu, Database, Layout, Palette, Globe,
@@ -26,6 +27,32 @@ function SkillIcon({ name, className, style }) {
 
 export default function Skills() {
   const [hoveredSkill, setHoveredSkill] = useState(null);
+
+  const handleSkillClick = (skillName) => {
+    window.dispatchEvent(new CustomEvent('filter-projects-by-skill', { detail: skillName }));
+    const projEl = document.getElementById('projects');
+    if (projEl) {
+      projEl.scrollIntoView({ behavior: 'smooth' });
+    }
+    showToast(`Filtering projects by skill: ${skillName}`);
+  };
+
+  const getProjectMatchCount = (name) => {
+    const q = name.toLowerCase();
+    // common aliases
+    const searchTerms = [q];
+    if (q.includes('c++')) searchTerms.push('c++');
+    if (q.includes('react')) searchTerms.push('react', 'next.js');
+    if (q.includes('agentic')) searchTerms.push('agent', 'multi-agent', 'langgraph');
+    if (q.includes('rag')) searchTerms.push('rag', 'temporal rag');
+    if (q.includes('fastapi')) searchTerms.push('fastapi');
+    if (q.includes('pytorch')) searchTerms.push('pytorch');
+
+    return projects.filter(p => {
+      const fullText = [p.title, p.description, ...p.tags, p.category].join(' ').toLowerCase();
+      return searchTerms.some(term => fullText.includes(term));
+    }).length;
+  };
 
   return (
     <section id="skills" className="py-12 reveal">
@@ -101,13 +128,16 @@ export default function Skills() {
                 <div className="flex flex-wrap gap-2">
                   {group.skills.map((skill) => {
                     const isHovered = hoveredSkill === skill.name;
+                    const matchCount = getProjectMatchCount(skill.name);
 
                     return (
                       <div
                         key={skill.name}
+                        onClick={() => handleSkillClick(skill.name)}
                         onMouseEnter={() => setHoveredSkill(skill.name)}
                         onMouseLeave={() => setHoveredSkill(null)}
-                        className="group/item inline-flex items-center gap-2 px-3 py-2 rounded-xl transition-all duration-200 cursor-default select-none relative"
+                        title={matchCount > 0 ? `Click to see ${matchCount} matching project(s)` : `Click to search projects for ${skill.name}`}
+                        className="group/item inline-flex items-center gap-2 px-3 py-2 rounded-xl transition-all duration-200 cursor-pointer select-none relative"
                         style={{
                           background: isHovered ? 'var(--surface)' : 'var(--surface-2)',
                           border: `1px solid ${isHovered ? 'var(--accent)' : 'var(--border)'}`,
@@ -137,6 +167,16 @@ export default function Skills() {
                         >
                           {skill.name}
                         </span>
+
+                        {/* Project count indicator on hover */}
+                        {matchCount > 0 && isHovered && (
+                          <span
+                            className="text-[10px] px-1.5 py-0.2 rounded-md font-bold transition-all animate-in fade-in"
+                            style={{ background: 'var(--accent-muted)', color: 'var(--accent-text)' }}
+                          >
+                            {matchCount} {matchCount === 1 ? 'proj' : 'projs'} →
+                          </span>
+                        )}
                       </div>
                     );
                   })}
